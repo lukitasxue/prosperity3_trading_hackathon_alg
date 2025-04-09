@@ -151,4 +151,6 @@ class Trader:
                     self.entry_price[self.product] = None # clear the stored entry price
 
 
-            return {self.product: orders}, 0, ""
+        logger.print(f"End of Tick {state.timestamp} — PnL so far: {self.pnl.get(self.product, 0)}")
+        logger.flush(state, {self.product: orders}, 0, "")
+        return {self.product: orders}, 0, ""
